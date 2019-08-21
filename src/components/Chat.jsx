@@ -1,4 +1,5 @@
 import React from 'react';
+import shortid from 'shortid';
 import MessageHistory from './MessageHistory';
 import avatar from '../i/avatar.jpg';
 
@@ -6,7 +7,7 @@ function Chat({ chats, messages }) {
   const users = chats.map(chat => {
     const status = chat.isOnline ? 'в сети' : `был ${chat.lastSeen}`;
     return (
-      <li className="clearfix">
+      <li className="clearfix" key={shortid.generate()}>
         <img src={chat.avatar} alt="avatar" />
         <div className="about">
           <div className="name">{chat.name}</div>
